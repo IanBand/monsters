@@ -1,0 +1,89 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://monsters/blocky/BlockyMonster.gd" type="Script" id=1]
+[ext_resource path="res://monsters/blocky/blocky-walk2.png" type="Texture" id=2]
+[ext_resource path="res://monsters/blocky/blocky-walk3.png" type="Texture" id=3]
+[ext_resource path="res://monsters/blocky/blocky-throw.png" type="Texture" id=4]
+[ext_resource path="res://monsters/blocky/blocky-flinch.png" type="Texture" id=5]
+[ext_resource path="res://monsters/blocky/blocky-walk1.png" type="Texture" id=6]
+[ext_resource path="res://monsters/blocky/blocky-walk4.png" type="Texture" id=7]
+[ext_resource path="res://monsters/blocky/2-blocky-hold-walk3.png" type="Texture" id=8]
+[ext_resource path="res://monsters/blocky/0-blocky-hold-walk4.png" type="Texture" id=9]
+[ext_resource path="res://monsters/blocky/0-blocky-hold-walk1.png" type="Texture" id=10]
+[ext_resource path="res://monsters/blocky/0-blocky-hold-walk2.png" type="Texture" id=11]
+[ext_resource path="res://monsters/blocky/2-blocky-hold-walk1.png" type="Texture" id=12]
+[ext_resource path="res://monsters/blocky/0-blocky-hold-walk3.png" type="Texture" id=13]
+[ext_resource path="res://monsters/blocky/2-blocky-hold-walk4.png" type="Texture" id=14]
+[ext_resource path="res://monsters/blocky/2-blocky-hold-walk2.png" type="Texture" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 48.5, 75.5 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "flinch",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "grab",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "special",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "throw",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 8 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk-hold",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "grab",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walk-hold",
+"speed": 5.0
+} ]
+
+[node name="BlockyMonster" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -8.5, -50.5 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite-0" type="AnimatedSprite" parent="."]
+position = Vector2( 23, -94 )
+frames = SubResource( 2 )
+animation = "walk"
+
+[node name="AnimatedSprite-2" type="AnimatedSprite" parent="."]
+position = Vector2( 23, -94 )
+z_index = 2
+frames = SubResource( 3 )
+animation = "none"

@@ -1,0 +1,127 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://menu/title/main-title.png" type="Texture" id=1]
+[ext_resource path="res://menu/title/title_background.png" type="Texture" id=2]
+[ext_resource path="res://menu/title/title-monsterpedia.png" type="Texture" id=3]
+[ext_resource path="res://menu/title/title-options.png" type="Texture" id=4]
+[ext_resource path="res://menu/title/title-text-click2.png" type="Texture" id=5]
+[ext_resource path="res://menu/title/title-play.png" type="Texture" id=6]
+[ext_resource path="res://menu/title/title-text-hover2.png" type="Texture" id=7]
+[ext_resource path="res://menu/title/title-text-hover3.png" type="Texture" id=8]
+[ext_resource path="res://menu/title/title-text-click3.png" type="Texture" id=9]
+[ext_resource path="res://menu/title/title-text-click4.png" type="Texture" id=10]
+[ext_resource path="res://menu/title/title-text-hover4.png" type="Texture" id=11]
+[ext_resource path="res://menu/title/title-quit.png" type="Texture" id=12]
+[ext_resource path="res://menu/title/title-text-click1.png" type="Texture" id=13]
+[ext_resource path="res://menu/title/title-text-hover1.png" type="Texture" id=14]
+[ext_resource path="res://menu/MenuButton.gd" type="Script" id=15]
+[ext_resource path="res://menu/title/MenuMonsterGraphic.gd" type="Script" id=16]
+[ext_resource path="res://menu/title/title-mage.png" type="Texture" id=17]
+[ext_resource path="res://menu/title/title-blocky.png" type="Texture" id=18]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="LeftRigidBody2D" type="RigidBody2D" parent="Node2D"]
+position = Vector2( 268, 767 )
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true
+}
+init_force = Vector2( 200, -500 )
+
+[node name="Sprite" type="Sprite" parent="Node2D/LeftRigidBody2D"]
+position = Vector2( 0, 5 )
+texture = ExtResource( 18 )
+
+[node name="RightRigidBody2D" type="RigidBody2D" parent="Node2D"]
+position = Vector2( 1597, 747 )
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Node2D/RightRigidBody2D"]
+texture = ExtResource( 17 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+alignment = 1
+
+[node name="Title" type="TextureRect" parent="VBoxContainer"]
+margin_top = 304.0
+margin_right = 1920.0
+margin_bottom = 504.0
+rect_pivot_offset = Vector2( -3004, -742 )
+mouse_filter = 0
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="Play" type="TextureButton" parent="VBoxContainer"]
+margin_left = 832.0
+margin_top = 508.0
+margin_right = 1087.0
+margin_bottom = 572.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+stretch_mode = 4
+script = ExtResource( 15 )
+scene_to_load = "res://menu/levelSelect/LevelSelectMenu.tscn"
+
+[node name="Options" type="TextureButton" parent="VBoxContainer"]
+margin_left = 832.0
+margin_top = 576.0
+margin_right = 1087.0
+margin_bottom = 640.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
+stretch_mode = 4
+script = ExtResource( 15 )
+
+[node name="Monsterpedia" type="TextureButton" parent="VBoxContainer"]
+margin_left = 832.0
+margin_top = 644.0
+margin_right = 1087.0
+margin_bottom = 708.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+stretch_mode = 4
+script = ExtResource( 15 )
+
+[node name="Quit" type="TextureButton" parent="VBoxContainer"]
+margin_left = 832.0
+margin_top = 712.0
+margin_right = 1087.0
+margin_bottom = 776.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+stretch_mode = 4
+script = ExtResource( 15 )
+is_quit = true

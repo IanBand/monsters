@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://items/paintBucket/PaintBucketItem.gd" type="Script" id=1]
+[ext_resource path="res://items/paintBucket/paint-bucket2.png" type="Texture" id=2]
+[ext_resource path="res://items/paintBucket/paint-flying1.png" type="Texture" id=3]
+[ext_resource path="res://items/paintBucket/paint-bucket3.png" type="Texture" id=4]
+[ext_resource path="res://items/paintBucket/paint-flying2.png" type="Texture" id=5]
+[ext_resource path="res://items/paintBucket/paint-bucket1.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 87.5, 66.5 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "flying",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "spilled",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="BaseItem" type="RigidBody2D"]
+mode = 2
+mass = 0.2
+gravity_scale = 0.99
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 0 )
+shape = SubResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "spilled"
+
+[node name="PaintAnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 187, 1 )
+frames = SubResource( 5 )
